@@ -1,0 +1,40 @@
+<!--  -->
+<!--  -->
+
+{{ modalGlobalService.add('template1', template1, "") }}
+
+<ng-template #template1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{title}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div *ngIf="dataChartsModal" class="modal-body">
+
+        <div class="container-fuid">
+            <div class="row mb-2"  *ngFor="let dataModal of dataChartsModal">
+                <div class="card border-info  position-relative">
+                     <!-- chart types list -->
+                     <div *ngIf="typeChart" class="position-absolute top-0 start-0 mb-2 pb-2"
+                     style="max-width: 200px;">
+                     <select class="form-select" [(ngModel)]="dataModal.chartType">
+                         <option>Chart type:</option>
+                         <option *ngFor="let item of typeChart.data" [value]="item.type">
+                             {{item.title}}</option>
+                     </select>
+                 </div>
+                    <div class="card-body">
+                       
+                        <app-chart [chartType]="dataModal.chartType" [chartDatasets]="dataModal.dataset"
+                            [chartLabels]="dataModal.labelDataset">
+                        </app-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

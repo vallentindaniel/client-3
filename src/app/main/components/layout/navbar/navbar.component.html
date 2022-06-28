@@ -1,0 +1,51 @@
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar ie-nav"
+    [containerInside]="false">
+    <logo>
+        <a class="logo navbar-brand" routerLink="home"><strong>VertiGo</strong></a>
+    </logo>
+    <links>
+
+        <ul class="navbar-nav mr-auto" *ngIf="isGuest">
+
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="/guest/welcome">Home</a>
+            </li>
+        </ul>
+
+
+        <ul class="navbar-nav mr-auto" *ngIf="isUser">
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="/controlCenter">Control Center</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav mr-auto" *ngIf="isAdmin">
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="/admin/home">Home</a>
+            </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="/controlCenter">Control Center</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav nav-flex-icons" *ngIf="isGuest">
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link" routerLink="login">Login</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav nav-flex-icons" *ngIf="isLogged">
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a class="nav-link">Contul meu <b *ngIf="isAdmin" >(Admin)</b>
+                </a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link" (click)="logout()" >Logout</a>
+            </li>
+        </ul>
+
+    </links>
+</mdb-navbar>

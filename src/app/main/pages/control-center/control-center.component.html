@@ -1,0 +1,63 @@
+<div class="container mt-5 pt-5" style="height:1300px;">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 text-center">
+
+        <div class="col mb-2" *ngIf="isAdmin" >
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Type Charts Settings</h4>
+                    <a class="card-link btn btn-outline-success" (click)="openXl(1, typeChartsettings)">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-2" *ngIf="isAdmin" >
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Time Frame Settings</h4>
+                    <a class="card-link btn btn-outline-success" (click)="openXl(2, timeFrameSettings)">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-2" *ngIf="isAdmin" >
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Account Settings</h4>
+                    <a class="card-link btn btn-outline-success" (click)="openXl(3, accountSettings)">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-2" >
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Enviroment Settings</h4>
+                    <a class="card-link btn btn-outline-success" (click)="openXl(4, enviromentSettings)">Open</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{ modalGlobalService.add('modalControlCenter', modalControlCenter, "") }}
+
+<ng-template #modalControlCenter let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{selectedTitle}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+        <app-type-chart-settings *ngIf="poz == 1"></app-type-chart-settings>
+
+        <app-time-frame-settings *ngIf="poz == 2"></app-time-frame-settings>
+
+        <app-accounts *ngIf="poz == 3" ></app-accounts>
+
+        <app-enviroment-settings *ngIf="poz == 4" ></app-enviroment-settings>
+
+    </div>
+    <div class="modal-footer">
+    </div>
+</ng-template>

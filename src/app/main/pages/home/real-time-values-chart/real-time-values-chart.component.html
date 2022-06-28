@@ -1,0 +1,45 @@
+<!-- Real Time data in Chart -->
+<div *ngIf="chartDataObj" class="row row-cols-1 row-cols-lg-2 justify-content-center">
+
+    <div class="col mt-4" *ngFor="let chartData of chartDataObj.chartDataArr; index as i">
+        <div class="card-group">
+            <div class="card border-info mx-1 position-relative">
+
+                <!-- chart types list -->
+                <div *ngIf="typeChart" class="position-absolute top-0 start-0" style="max-width: 200px;">
+                    <select class="form-select" [(ngModel)]="typeChartArr[i]">
+                        <option>Chart type:</option>
+                        <option *ngFor="let item of typeChart.data" [value]="item.type">
+                            {{item.title}}</option>
+                    </select>
+                </div>
+
+                <!-- Show more button position -->
+                <div *ngIf="typeChart" class="position-absolute top-0 end-0" style="max-width: 200px;">
+                    <!-- , chartData.category -->
+                    <a class="card-link shadow me-1 mt-1 btn btn-outline-primary " 
+                    (click)="open(chartData.category)" 
+                        mdbWavesEffect>
+                        Show More
+                    </a>
+                </div>
+
+
+
+                <!-- show charts -->
+                <div class="card-body mt-4">
+                    <h4 class="card-title">{{chartData.title}}</h4>
+                    <app-chart [chartType]="typeChartArr[i]" [chartDatasets]="chartData.dataset"
+                        [chartLabels]="chartData.labelData">
+                    </app-chart>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--  -->
+
+<!-- Show chart with time frame option, chart type option and description message for every time frame -->
+<app-modal-charts [title]="selectedTitle" [dataChartsModal]="dataCharts" ></app-modal-charts>

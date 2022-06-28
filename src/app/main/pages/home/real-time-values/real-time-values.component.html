@@ -1,0 +1,16 @@
+<!-- Real Time Values -->
+<div class="row  row-cols-1 row-cols-md-2 justify-content-center" *ngIf="avgData">
+    <!-- Display percentage from sensors -->
+    <div class="col mt-4" *ngFor=" let data of avgData.dataArr ">
+        <div class="card border-success mx-1">
+            <div class="card-body">
+                <h4 class="card-title"> {{data.title}} </h4>
+                <ngb-progressbar [type]="data.type" [value]="data.value" [animated]="true" [max]="data.max"
+                    [striped]="true">
+                    <b>{{data.value}} {{data.unit}}</b>
+                </ngb-progressbar>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->

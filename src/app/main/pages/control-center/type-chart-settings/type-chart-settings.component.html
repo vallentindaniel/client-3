@@ -1,0 +1,48 @@
+<!--  -->
+<!--  -->
+<!--  -->
+<button class="btn btn-primary mb-1" type="button" (click)="openXl(1, -1, optionAdd)" mdbWavesEffect>Add</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Type</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="typeChartObj">
+    <tr *ngFor="let item of typeChartObj.data; let i = index">
+      <th>{{item.id}}</th>
+      <th>{{item.title}}</th>
+      <th>{{item.type}}</th>
+
+      <th>
+        <button class="btn btn-success me-1" type="button" (click)="openXl(2, i,  optionEdit)" mdbWavesEffect>Edit</button>
+        <button class="btn btn-danger" type="button" (click)="openXl(3, i, optionDelete)" mdbWavesEffect>Delete</button>
+      </th>
+
+    </tr>
+  </tbody>
+</table>
+
+{{ modalGlobalService.add('contentTypeChart', contentTypeChart, "" ) }}
+
+<ng-template #contentTypeChart let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{selectedOption}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <app-add-type-chart *ngIf="poz == 1" ></app-add-type-chart>
+
+    <app-edit-type-chart [typeChart]="typeChartItem" *ngIf="poz == 2" ></app-edit-type-chart>
+
+    <app-delete-type-chart [chart_id]="typeChartItem.id" *ngIf="poz == 3" ></app-delete-type-chart>
+
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+  </div>
+</ng-template>

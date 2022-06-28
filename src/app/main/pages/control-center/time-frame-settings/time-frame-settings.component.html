@@ -1,0 +1,51 @@
+<!--  -->
+<!--  -->
+<!--  -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Limit</th>
+      <th scope="col">Limit Display</th>
+      <th scope="col">Limit Delete</th>
+      <th scope="col">Display Date</th>
+      <th scope="col">Display Time</th>
+      <th scope="col">Order Display Time Frame</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="timeFrameArr">
+    <tr *ngFor="let item of timeFrameArr; let i = index">
+      <th>{{item.id}}</th>
+      <th>{{item.title}}</th>
+      <th>{{item.limit}}</th>
+      <th>{{item.limit_display }}</th>
+      <th>{{item.limit_delete }}</th>
+      <th>{{item.display_date }}</th>
+      <th>{{item.display_time }}</th>
+      <th>{{item.order_limits }}</th>
+      <th>
+        <button class="btn btn-success me-1" type="button" (click)="openXl(2, i,  optionEdit)" mdbWavesEffect>Edit</button>
+      </th>
+
+    </tr>
+  </tbody>
+</table>
+
+{{ modalGlobalService.add('contentTimeFrame', contentTimeFrame, "" ) }}
+
+<ng-template #contentTimeFrame let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{selectedOption}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <!-- <app-edit-type-chart [typeChart]="typeChartItem" *ngIf="poz == 2" ></app-edit-type-chart> -->
+
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+  </div>
+</ng-template>

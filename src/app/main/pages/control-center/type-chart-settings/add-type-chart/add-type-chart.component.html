@@ -1,0 +1,26 @@
+<!--  -->
+<!--  -->
+<!--  -->
+<form [formGroup]="addDataForm" (ngSubmit)="onSubmit()" >
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Enter title" required  formControlName="title" >
+
+            <div *ngIf="title?.invalid ">
+                <div class="alert text-danger shadow">Title required</div>
+            </div>
+
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Enter Type" required formControlName="type">
+
+            <div *ngIf="type?.invalid ">
+                <div class="alert text-danger shadow">Type required</div>
+            </div>
+
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary mb-3">Save</button>
+        </div>
+    </div>
+</form>
